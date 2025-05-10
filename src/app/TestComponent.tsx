@@ -1,3 +1,4 @@
+import { Button, Typography } from '@mui/material';
 import { useAppDispatch, useAppSelector } from './store/hooks';
 import { login, logout } from 'entities/user';
 
@@ -7,10 +8,13 @@ export const TestComponent = () => {
 
 	return (
 		<div>
-			<h1>
+			<Typography variant="h1">Online Fitness Trainer</Typography>
+			<Typography>
 				Auth: {isAuthenticated ? `Logged in as ${user?.name}` : 'Not logged in'}
-			</h1>
-			<button
+			</Typography>
+			<Button
+				variant="contained"
+				color="primary"
 				onClick={() =>
 					dispatch(
 						login({ id: '1', name: 'Test User', email: 'test@example.com' }),
@@ -18,8 +22,14 @@ export const TestComponent = () => {
 				}
 			>
 				Login
-			</button>
-			<button onClick={() => dispatch(logout())}>Logout</button>
+			</Button>
+			<Button
+				variant="outlined"
+				color="secondary"
+				onClick={() => dispatch(logout())}
+			>
+				Logout
+			</Button>
 		</div>
 	);
 };
