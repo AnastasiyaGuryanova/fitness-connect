@@ -1,6 +1,18 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme, type ThemeOptions } from '@mui/material/styles';
+declare module '@mui/material/styles' {
+	interface TypeBackground {
+		page: string;
+	}
 
-const theme = createTheme({
+	interface Palette {
+		background: TypeBackground;
+	}
+	interface PaletteOptions {
+		background?: Partial<TypeBackground>;
+	}
+}
+
+const theme: ThemeOptions = createTheme({
 	palette: {
 		primary: {
 			main: '#2A3C50',
@@ -15,9 +27,10 @@ const theme = createTheme({
 			main: '#D32F2F',
 		},
 		background: {
-			default: '#d8d5cc',
-			paper: '#e3e6dc',
-		},
+			default: '#e3e6dc',
+			paper: '#eaece4',
+			page: '#1c3139',
+		} as const,
 		text: {
 			primary: '#1c3139',
 			secondary: '#e3e6dc',
