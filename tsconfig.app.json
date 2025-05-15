@@ -19,7 +19,7 @@
 		"strict": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"erasableSyntaxOnly": true,
+		"erasableSyntaxOnly": false,
 		"noFallthroughCasesInSwitch": true,
 		"noUncheckedSideEffectImports": true,
 
@@ -34,5 +34,6 @@
 			"shared/*": ["shared/*"]
 		}
 	},
-	"include": ["src"]
+	"include": ["src", "test"],
+	"exclude": ["node_modules"]
 }
