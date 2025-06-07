@@ -4,3 +4,4 @@ export * from './Form';
 export * from './Modal';
 export * from './Card';
 export * from './AppWrapper';
+export * from './FileUpload';

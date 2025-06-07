@@ -5,20 +5,25 @@ import { useForm } from 'react-hook-form';
 import { Form, Button } from 'shared/ui';
 import { internalPaths } from 'shared/constants';
 import { useAppSelector } from 'app/store/hooks';
-import { loginSchema, type LoginFormData } from 'entities/user';
-import { useLogin, LoginFormFields } from 'features/auth';
+import { signupSchema, type SignupFormData } from 'entities/user';
+import { useSignup, SignupFormFields } from 'features/auth';
 
-export const LoginPage = () => {
+export const SignupPage = () => {
 	const isAuthenticated = useAppSelector((state) => state.user.isAuthenticated);
-	const { handleLogin, error } = useLogin();
+	const { handleSignup, error } = useSignup();
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors, isValid },
-	} = useForm<LoginFormData>({
-		resolver: zodResolver(loginSchema),
+		setValue,
+		trigger,
+	} = useForm<SignupFormData>({
+		resolver: zodResolver(signupSchema),
 		mode: 'onChange',
+		defaultValues: {
+			photos: [],
+		},
 	});
 
 	if (isAuthenticated) {
@@ -26,15 +31,25 @@ export const LoginPage = () => {
 	}
 
 	return (
-		<Box sx={{ maxWidth: 400, mx: 'auto', mt: 5 }}>
-			<Form onSubmit={handleSubmit(handleLogin)}>
+		<Box sx={{ maxWidth: 600, mx: 'auto', mt: 5 }}>
+			<Form onSubmit={handleSubmit(handleSignup)}>
 				<Typography variant="h2" align="center" mb={1}>
-					Вход
+					Регистрация
 				</Typography>
 
-				<LoginFormFields register={register} errors={errors} />
+				<SignupFormFields
+					register={register}
+					errors={errors}
+					setValue={setValue}
+					trigger={trigger}
+				/>
 
-				<Button label="Войти" type="submit" disabled={!isValid} sx={{ mt: 2 }} />
+				<Button
+					label="Зарегистрироваться"
+					type="submit"
+					disabled={!isValid}
+					sx={{ mt: 2 }}
+				/>
 
 				{error && (
 					<Typography color="error" align="center" mt={2}>
@@ -43,8 +58,7 @@ export const LoginPage = () => {
 				)}
 
 				<Typography align="center" mt={2}>
-					Нет аккаунта?{' '}
-					<Link to={internalPaths.signup}>Зарегистрироваться</Link>
+					Уже есть аккаунт? <Link to={internalPaths.login}>Войти</Link>
 				</Typography>
 			</Form>
 		</Box>

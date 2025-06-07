@@ -43,6 +43,31 @@ const theme: ThemeOptions = createTheme({
 			fontWeight: 600,
 			color: '#1c3139',
 		},
+		h2: {
+			fontSize: '1.75rem',
+			fontWeight: 600,
+			color: '#1c3139',
+		},
+		h3: {
+			fontSize: '1.5rem',
+			fontWeight: 500,
+			color: '#1c3139',
+		},
+		h4: {
+			fontSize: '1.25rem',
+			fontWeight: 500,
+			color: '#1c3139',
+		},
+		h5: {
+			fontSize: '1.125rem',
+			fontWeight: 500,
+			color: '#1c3139',
+		},
+		h6: {
+			fontSize: '1rem',
+			fontWeight: 500,
+			color: '#1c3139',
+		},
 		body1: {
 			fontSize: '1rem',
 			color: '#1c3139',
