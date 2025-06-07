@@ -3,7 +3,7 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 export interface User {
 	id: string;
 	name: string;
-	email: string;
+	contact: string;
 	age?: number;
 	weight?: number;
 	height?: number;
@@ -16,7 +16,7 @@ export interface User {
 	restrictions?: string;
 	trainingExperience?: string;
 	diet?: string;
-	photos?: string;
+	photoUrls?: string[];
 }
 
 export interface UserState {
