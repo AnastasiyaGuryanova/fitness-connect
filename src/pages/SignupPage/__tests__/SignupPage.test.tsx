@@ -60,8 +60,6 @@ describe('SignupPage', () => {
 			preloadedState: { user: { user: null, isAuthenticated: false } },
 		});
 
-		screen.debug();
-
 		await waitFor(
 			() => {
 				expect(screen.getByText('Регистрация')).toBeInTheDocument();
@@ -84,8 +82,6 @@ describe('SignupPage', () => {
 			routerProps: { initialEntries: ['/signup'] },
 			preloadedState: { user: { user: null, isAuthenticated: false } },
 		});
-
-		screen.debug();
 
 		await waitFor(
 			() => {
@@ -111,8 +107,6 @@ describe('SignupPage', () => {
 			preloadedState: { user: { user: null, isAuthenticated: false } },
 		});
 
-		screen.debug();
-
 		const nameInput = screen.getByLabelText('Имя');
 		const contactInput = screen.getByLabelText('Email или телефон');
 		const ageInput = screen.getByLabelText('Возраст');
@@ -124,8 +118,6 @@ describe('SignupPage', () => {
 		await userEvent.type(ageInput, '25');
 		await userEvent.type(weightInput, '70');
 		await userEvent.click(submitButton);
-
-		screen.debug();
 
 		await waitFor(
 			() => {
@@ -146,6 +138,7 @@ describe('SignupPage', () => {
 			contact: 'test@example.com',
 			photoUrls: [],
 			age: 25,
+			role: 'client',
 		};
 		(registerUser as jest.Mock).mockReturnValue({ success: true, user: userData });
 
@@ -153,8 +146,6 @@ describe('SignupPage', () => {
 			routerProps: { initialEntries: ['/signup'] },
 			preloadedState: { user: { user: null, isAuthenticated: false } },
 		});
-
-		screen.debug();
 
 		const nameInput = screen.getByLabelText('Имя');
 		const contactInput = screen.getByLabelText('Email или телефон');
@@ -167,8 +158,6 @@ describe('SignupPage', () => {
 		await userEvent.type(ageInput, '25');
 		await userEvent.type(weightInput, '70');
 		await userEvent.click(submitButton);
-
-		screen.debug();
 
 		await waitFor(
 			() => {
@@ -188,13 +177,12 @@ describe('SignupPage', () => {
 			name: 'Test User',
 			contact: 'test@example.com',
 			photoUrls: [],
+			role: 'client',
 		};
 		renderWithProviders(<SignupPage />, {
 			routerProps: { initialEntries: ['/signup'] },
 			preloadedState: { user: { user: userData, isAuthenticated: true } },
 		});
-
-		screen.debug();
 
 		await waitFor(
 			() => {
