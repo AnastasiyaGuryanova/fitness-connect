@@ -1,18 +1,20 @@
 import type { SignupFormData } from './schema';
 import { type User } from './userSlice';
 
-const mockUsers: { [key: string]: User & { password: string } } = {
+export const mockUsers: { [key: string]: User & { password: string } } = {
 	'test@example.com': {
 		id: '1',
 		name: 'Test User',
 		contact: 'test@example.com',
 		password: 'password123',
+		role: 'client',
 	},
 	'+79999999999': {
 		id: '2',
 		name: 'Test User Phone',
 		contact: '+79999999999',
 		password: 'password123',
+		role: 'trainer',
 	},
 };
 
@@ -65,6 +67,7 @@ export const registerUser = async (
 			trainingExperience: data.trainingExperience,
 			diet: data.diet,
 			photoUrls,
+			role: 'client',
 		};
 
 		mockUsers[contact] = newUser;
