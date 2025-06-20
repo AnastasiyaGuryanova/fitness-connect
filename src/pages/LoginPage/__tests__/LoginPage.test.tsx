@@ -110,6 +110,7 @@ describe('LoginPage', () => {
 			id: '1',
 			name: 'Test User',
 			contact: 'test@example.com',
+			role: 'client',
 		};
 		(authenticate as jest.Mock).mockReturnValue(userData);
 
@@ -140,6 +141,7 @@ describe('LoginPage', () => {
 			id: '1',
 			name: 'Test User',
 			contact: 'test@example.com',
+			role: 'client',
 		};
 		renderWithProviders(<LoginPage />, {
 			routerProps: { initialEntries: ['/login'] },
